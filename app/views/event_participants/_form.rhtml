@@ -1,0 +1,24 @@
+<fieldset>
+	<div class="row">
+		<!--[form:event_participant]-->
+<div class="form-element">
+  <label for="event_participant_event">Event</label>
+  <%= select 'event_participant', 'event_id' , Event.find(:all,:order=>"event_class asc").collect {|e| [ "#{e.event_class} - #{e.name}", e.id ] } %>
+</div>
+<div class="form-element">
+  <label for="event_participant_rider">Rider</label>
+  <%= select 'event_participant', 'rider_id' , filter_by_owner(Rider.find_all).collect {|o| [ o.name, o.id ] } %>
+</div>
+<div class="form-element">
+  <label for="event_participant_horse">Horse</label>
+  <%= select 'event_participant', 'horse_id' , filter_by_owner(Horse.find_all).collect {|o| [ o.name, o.id ] } %>
+</div>
+<div class="form-element">
+  <label for="event_participant_result">Result</label>
+  <%= text_field 'event_participant', 'result' , {:class=>"text-input"} %>
+</div>
+
+<!--[eoform:event_participant]-->
+
+	</div>
+</fieldset>

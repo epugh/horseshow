@@ -1,0 +1,65 @@
+
+
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+<p/>
+<font size="1">
+  List of Events
+</font>
+<p/>
+<font size="2">
+	
+	<% for @event in @events %>
+  <table border=1 style="page-break-after:always;">	
+	  <tr>
+	    <th colspan=5 align="left"><font size="+1">Class <%=@event.event_class%>:</font> <%=@event.name%></th>
+	  </tr>	
+	  <tr>
+	    <th>Place</th>
+	    <th>Horse</th>
+	    <th>Horse Number</th>
+	    <th>Rider</th>
+	    <th>Owner</th>
+	  </tr>	  
+	  <%
+	  @eps = @event.event_participants.reject{|ep| ep.result.blank?}
+	  %>
+	  <% for @ep in @eps.sort_by{ |ep| ep.result} %>
+	  
+  		<tr>
+  			<td><%=@ep.result%></td>
+  			<td><%=@ep.horse.name%></td>
+  			<td><%=@ep.horse.number%></td>
+  			<td><%=@ep.rider.name%></td>
+  			<td><%=@ep.owner.name%></td>
+  		</tr>
+  	<% end %>
+    <%
+	  @eps = @event.event_participants.select{|ep| ep.result.blank?}
+	  %>
+	  <% for @ep in @eps %>
+	  
+  		<tr>
+  			<td><%=@ep.result%></td>
+  			<td><%=@ep.horse.name%></td>
+  			<td><%=@ep.horse.number%></td>
+  			<td><%=@ep.rider.name%></td>
+  			<td><%=@ep.owner.name%></td>
+  		</tr>
+  	<% end %>  	
+	  <tr>
+	    <th colspan=5 align="left">&nbsp;</th>
+	  </tr>  	
+	</table>
+	<p/>
+	<% end %>
+
+</font>
+<p/>
+

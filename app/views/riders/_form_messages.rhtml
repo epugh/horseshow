@@ -1,0 +1,5 @@
+<%= render :partial => 'messages' %>
+
+<% unless @rider.nil? %>
+<%= error_messages_for 'rider' %>
+<% end %>

@@ -1,0 +1,18 @@
+Multiple Event Submissions
+<%= start_form_tag(:controller => 'event_participants', :action => 'create_multiple_events') %>
+<div class="form-element">
+  <label for="event_participant_rider">Rider</label>
+  <%= select 'event_participant', 'rider_id' , filter_by_owner(Rider.find_all).collect {|o| [ o.name, o.id ] } %>
+</div>
+<div class="form-element">
+  <label for="event_participant_horse">Horse</label>
+  <%= select 'event_participant', 'horse_id' , filter_by_owner(Horse.find_all).collect {|o| [ o.name, o.id ] } %>
+</div>
+<div class="form-element">
+  <label for="event_participant_horse">Event Class Codes (<font size=-1>Comma delimited list (1,23,43) of event class codes</font>)</label>
+  <br/>
+  <%= text_field_tag 'event_classes' , '', {:class=>"text-input", :length=>40} %>
+  <br/>
+  <%= submit_tag 'Save multiple classes', :class => "submit" %>
+</div>
+<%= end_form_tag %>

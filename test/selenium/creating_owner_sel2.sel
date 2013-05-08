@@ -1,0 +1,24 @@
+Creating Owner via Selenese.  
+
+Note: fails due to popup, but really passes...
+
+|store|javascript{Math.floor(Math.random()*100000)}|unique|
+
+|store|Clint Eastwood|owner_name|
+
+|store|${owner_name}-${unique}|owner_name|	
+
+
+	
+    |includePartial|owner_create|
+
+
+
+
+	|answerOnNextPrompt|true||
+			
+	|click|//a[@id='owner_delete_${owner_id}']||
+
+	|waitForTextNotPresent|${owner_name}||
+		
+	|assertTextNotPresent|${owner_name}||	

@@ -1,0 +1,9 @@
+After creating an owner, redirect to the manage page.
+
+Add a Notes field to explain things to riders, horses, and owners.
+
+Show both horse name and horse number!
+
+Interface for updating judging data
+
+submit multiple events via 1,5,28 pattern

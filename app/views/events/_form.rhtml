@@ -1,0 +1,46 @@
+<fieldset>
+	<div class="row">
+		<!--[form:event]-->
+<div class="form-element">
+  <label for="event_class">Event Class Code</label>
+  <%= text_field 'event', 'event_class' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="event_name">Class Title</label>
+  <%= text_field 'event', 'name' , {:class=>"text-input", :size => 80} %>
+</div>
+<div class="form-element">
+  <label for="event_name">Description</label>
+  <%= text_field 'event', 'description' , {:class=>"text-input", :size => 80} %>
+</div>
+<div class="form-element">
+  <label for="event_sponsor">Sponsor</label>
+  <%= text_field 'event', 'sponsor' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="event_sponsor2">Co Sponsor 2</label>
+  <%= text_field 'event', 'sponsor2' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="event_sponsor3">Co Sponsor 3</label>
+  <%= text_field 'event', 'sponsor3' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="event_fee">Fee</label>
+  <%= text_field 'event', 'fee' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="event_cup">Cup</label>
+  <%= text_field 'event', 'cup' , {:class=>"text-input"} %>
+</div>
+
+
+<div class="form-element">
+  <label for="event_updated_at">Last updated at</label>
+ <%= @event.updated_at %>
+</div>
+
+<!--[eoform:event]-->
+
+	</div>
+</fieldset>

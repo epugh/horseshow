@@ -1,0 +1,43 @@
+
+
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+<p/>
+<font size="1">
+  List of Events
+</font>
+<p/>
+<font size="1">
+<table border=1>
+  <!--
+    "id","name","event_class","sponsor","sponsor2","sponsor3", "fee","cup"
+    -->
+	<tr>
+	  <th>Class</th>
+	  <th>Name</td><th>Sponsor</th><th>Sponsor 2</th>
+	  <th>Sponsor 3</th><th>Fee</th><th>Cup</th><th>Size</th>
+	</tr>
+	
+	<% for @event in @events %>
+		<tr>
+			<td><%=@event.event_class%></td>
+			<td><%=@event.name%></td>
+			<td><%=@event.sponsor%></td>
+			<td><%=@event.sponsor2%></td>
+			<td><%=@event.sponsor3%></td>
+      <td><%=@event.fee%></td>
+      <td><%=@event.cup%></td>
+      <td><%=@event.event_participants.size%></td>
+		</tr>
+	<% end %>
+
+</table>
+</font>
+<p/>
+

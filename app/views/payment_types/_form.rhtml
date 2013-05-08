@@ -1,0 +1,17 @@
+<fieldset>
+	<div class="row">
+		<!--[form:payment_type]-->
+<div class="form-element">
+  <label for="payment_type_name">Name</label>
+  <%= text_field 'payment_type', 'name' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="payment_type_updated_at">Last updated at</label>
+ <%= @payment_type.updated_at %>
+</div>
+
+<!--[eoform:payment_type]-->
+
+	</div>
+</fieldset>

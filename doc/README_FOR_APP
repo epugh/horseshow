@@ -1,0 +1,4 @@
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake appdoc" to generate API documentation for your models and controllers.
+
+To start up this application use "cap deploy_with_migrations" because we need to regenerate the schema after every change.  This is because we use sqlite.  Could move to keep sqlite in the system directory soon.

@@ -1,0 +1,78 @@
+
+
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+<p/>
+<font size="2">
+<table border=1>
+  <!--
+    "payment type", "check number","amount due","amount paid","amount owed","id",
+    "name","stable","street1","street2","city", "state","zip", "phone", "email"
+    -->
+	<tr>
+	  <th>Payment Type</th>
+	  <th>Check Number</td><th>Amount Due</th><th>Amount Paid</th>
+	  <th>Amount Owed</th><th>Name</th><th>Stable</th>
+	  <th>Street 1</th><th>Street 2</th><th>City</th><th>State</th><th>Zip</th>
+	  <th>Phone</th><th>Email</th>
+	</tr>
+	
+	<% for @owner in @owners %>
+		<tr>
+			<td><%=@owner.payment_type.name%></td>
+			<td><%=@owner.check_number%></td>
+			<td><%=@owner.total_fees%></td>
+			<td><%=@owner.amount_paid%></td>
+			<td><%=@owner.amount_owed%></td>
+      <td><%=@owner.name%></td>
+      <td><%=@owner.stable%></td>
+      <td><%=@owner.street1%></td>
+      <td><%=@owner.street2%></td>
+      <td><%=@owner.city%></td>
+      <td><%=@owner.state%></td>
+      <td><%=@owner.zip%></td>
+      <td><%=@owner.phone%></td>
+      <td><%=@owner.email%></td>
+		</tr>
+	<% end %>
+
+</table>
+</font>
+<p/>
+  Sub totals by payment type:
+<font size="2">
+<table border=1>
+	<tr><td>Payment Type</td><td>Total Fees</td><td>Total Paid</td><td>Difference</td></tr>
+	<%
+	grand_total_fees = 0
+	grand_total_amount_paid = 0
+	grand_total_amount_owned = 0
+	%>
+	<% for pt in PaymentType.find_all
+		grand_total_fees = grand_total_fees + pt.total_fees
+		grand_total_amount_paid = grand_total_amount_paid + pt.total_amount_paid
+		grand_total_amount_owned =grand_total_amount_owned+ pt.total_amount_owed
+	%>
+		<tr>
+			<td><%=pt.name%></td>
+			<td align="right"><%=pt.total_fees%></td>
+			<td align="right"><%=pt.total_amount_paid%></td>
+			<td align="right"><%=pt.total_amount_owed%></td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>Grand Totals</th>
+		<td align="right"><b><%=grand_total_fees%></b></td>
+		<td align="right"><b><%=grand_total_amount_paid%></b></td>
+		<td align="right"><b><%=grand_total_amount_owned%></b></td>
+	</tr>
+</table>
+</font>
+<p/>
+

@@ -1,0 +1,45 @@
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+<p/>
+<font size="1">
+  List of open checks
+</font>
+<p/>
+<font size="2">
+<table border=1>
+  <!--
+    "amount due","check number","id","name","stable","street1","street2","city", "state","zip", "phone", "email
+    -->
+	<tr>
+	  <th>Amount Due</td><th>Check Number</th><th>Name</th>
+	  <th>Stable</th><th>Street 1</th><th>Street 2</th>
+	  <th>City</th><th>State</th><th>Zip</th>
+	  <th>Phone</th><th>Email</th>
+	</tr>
+	
+	<% for @owner in @owners %>
+		<tr>
+			<td><%=@owner.total_fees%></td>
+			<td><%=@owner.check_number%></td>
+			<td><%=@owner.name%></td>
+			<td><%=@owner.stable%></td>
+			<td><%=@owner.street1%></td>
+      <td><%=@owner.street2%></td>
+      <td><%=@owner.city%></td>
+      <td><%=@owner.state%></td>
+      <td><%=@owner.zip%></td>
+      <td><%=@owner.phone%></td>
+      <td><%=@owner.email%></td>
+		</tr>
+	<% end %>
+
+</table>
+</font>
+<p/>
+

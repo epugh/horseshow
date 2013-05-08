@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+event_1:
+  id: 1
+  name: 100 Meter Jump
+  event_class: 14
+  fee: 10
+  created_at: '2006-05-01 00:00:00'
+  updated_at: '2006-05-01 00:00:00'
+event_2:
+  id: 2
+  name: 5 Horse Scramble
+  event_class: 15A
+  fee: 5
+  created_at: '2006-05-01 00:00:00'
+  updated_at: '2006-05-01 00:00:00'

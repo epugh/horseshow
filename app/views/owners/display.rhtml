@@ -1,0 +1,11 @@
+<h1>Manage Stable</h1>
+
+
+<%= render_component :controller => '/owners', :action => 'component', :params => params %>
+
+<%= render_component :controller => '/horses', :action => 'component', :params => params %>
+
+<%= render_component :controller => '/riders', :action => 'component', :params => params %>
+
+<%= link_to 'Show', :action => 'show', :id => @rider %> |
+<%= link_to 'Back', :action => 'list' %>

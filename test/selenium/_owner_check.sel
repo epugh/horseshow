@@ -1,0 +1,16 @@
+
+	|type|owner_name|${owner_name}|
+	|type|owner_street1|10 Maple Street|
+	|type|owner_city|Smallville|
+	|type|owner_city|Charlottesville|
+	|type|owner_state|VA|
+	|type|owner_zip|22903|
+	|type|owner_phone|434-466-1467|
+	|type|owner_email|somebody@somewhere.com|
+	|type|owner_stable|Brown Stables|
+	|type|owner_amount_paid|10|
+	|click|owner_payment_type_id||
+	|select|owner_payment_type_id|label=Check|
+	|click|//option[@value='2']||
+	|click|owner_check_number||
+	|type|owner_check_number|056|

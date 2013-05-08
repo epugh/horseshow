@@ -1,0 +1,5 @@
+<%= render :partial => 'messages' %>
+
+<% unless @event_participant.nil? %>
+<%= error_messages_for 'event_participant' %>
+<% end %>

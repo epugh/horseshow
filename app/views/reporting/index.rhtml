@@ -1,0 +1,43 @@
+<% for name in [:info, :warning, :error] %>
+  <% if @flash[name] %>
+    <p class="<%= "#{name}-message message" %>" >
+      <%= @flash[name] %> 
+      <% if request.xhr? %>
+        <a href="#" onclick="Element.remove(this.parentNode); return false;">Close</a>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
+<p/>
+<h2>Reporting home page</h2>
+<h3>Financial Reports</h3>
+* <%= link_to('Open Checks List', :controller => 'reporting', :action => 'open_checks_list') %>
+<br/>
+* <%= link_to('All Payments', :controller => 'reporting', :action => 'all_payments_list') %>
+ <br/>
+<%= start_form_tag(:controller => 'reporting', :action => 'registration_receipt') %>
+<div class="form-element">
+ * <label for="event_participant_event">Registration Receipt</label>
+  <%= select 'owner', 'id' , Owner.find(:all, :order => "name ASC").collect {|e| [ e.name, e.id ] } %> <input type="submit" name="submit" value="Print Receipt"> 
+</div>
+<%= end_form_tag %>
+<h3>Misc Reports</h3>
+
+* <%= link_to('List of Events', :controller => 'reporting', :action => 'list_of_events') %>
+
+<br/>
+* <%= link_to('Owners List', :controller => 'reporting', :action => 'list_of_owners') %> 
+  (<%= link_to('Excel', :controller => 'reporting', :action => 'list_of_owners_csv') %>)
+ <br/>
+<%= start_form_tag(:controller => 'reporting', :action => 'announcers_list') %>
+<div class="form-element">
+ * <label for="event_participant_event">Announcers List</label>
+  <%= select 'event', 'id' , Event.find_all.collect {|e| [ "#{e.event_class} - #{e.name}", e.id ] } %> <input type="submit" name="submit" value="Get Report"> 
+</div>
+<%= end_form_tag %>
+* Placement Results: <%= link_to('HTML', :controller => 'reporting', :action => 'list_of_placements') %>, <%= link_to('Excel', :controller => 'reporting', :action => 'list_of_placements_csv') %>
+
+<h3>Import Data</h3>
+
+* <%= link_to('Results CSV File', :controller => 'import_results', :action => 'index') %>

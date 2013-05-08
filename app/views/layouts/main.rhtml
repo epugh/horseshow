@@ -1,0 +1,25 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Horse Show Registration</title>
+  <%= stylesheet_link_tag 'ajax_scaffold', :media => 'all' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'rico_corner', 'ajax_scaffold' %>
+</head>
+<body>
+	<span width=100%>
+	<h2><a href="/"><img align="middle" src="/images/horse_dressage_logo.jpg" width=80 height=78 border=0></a> 
+		&nbsp;&nbsp;<%= ENV['COUNT_OF_YEARS_OF_HORSESHOW'] %> Annual Middlebrook Horse Show&nbsp;&nbsp;
+		<img align="middle" src="/images/Ruremblm_BW_sm.jpg"></h2>
+	</span>
+<%= tabnav :main %>
+<%= @content_for_layout %>
+
+<hr/>
+<h5>
+Developed by <a href="http://www.opensourceconnections.com">OpenSource Connections</a>.  Copyright 2006.
+</h5>
+</body>
+</html>

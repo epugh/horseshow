@@ -1,0 +1,33 @@
+<fieldset>
+	<div class="row">
+		<!--[form:horse]-->
+<div class="form-element">
+  <label for="horse_name">Name</label>
+  <%= text_field 'horse', 'name' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="horse_number">Number</label>
+  <%= text_field 'horse', 'number' , {:class=>"text-input"} %>
+</div>
+<% if session[:owner] %>
+<%
+owner_options = [[session[:owner].name,session[:owner].id]]
+%>
+  <input type=hidden name='horse[owner_id]', value='<%=session[:owner].id%>'>
+
+<% else %>
+<div class="form-element">
+  <label for="horse_owner">Owner</label>
+  <%= select 'horse', 'owner_id' , Owner.find_all.collect {|o| [ o.name, o.id ] } %>
+</div>
+<% end %>
+
+<div class="form-element">
+  <label for="horse_updated_at">Last updated at</label>
+ <%= @horse.updated_at %>
+</div>
+
+<!--[eoform:horse]-->
+
+	</div>
+</fieldset>

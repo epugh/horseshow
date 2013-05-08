@@ -1,0 +1,66 @@
+<fieldset>
+	<div class="row">
+		<!--[form:owner]-->
+<div class="form-element">
+  <label for="owner_name">Name</label>
+  <%= text_field 'owner', 'name' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_street1">Street1</label>
+  <%= text_field 'owner', 'street1' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_street2">Street2</label>
+  <%= text_field 'owner', 'street2' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_city">City</label>
+  <%= text_field 'owner', 'city' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_state">State</label>
+  <%= text_field 'owner', 'state' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_zip">Zip</label>
+  <%= text_field 'owner', 'zip' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_phone">Phone</label>
+  <%= text_field 'owner', 'phone' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="owner_email">Email</label>
+  <%= text_field 'owner', 'email' , {:class=>"text-input"} %>
+</div>
+
+<div class="form-element">
+  <label for="owner_stable">Stable</label>
+  <%= text_field 'owner', 'stable' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="owner_amount_paid">Amount Paid</label>
+  <%= text_field 'owner', 'amount_paid' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="owner_payment_type">Payment Type</label>
+  <%= select 'owner', 'payment_type_id' , PaymentType.find_all.collect {|o| [ o.name, o.id ] } %>
+</div>
+<div class="form-element">
+  <label for="owner_check_number">Check Number</label>
+  <%= text_field 'owner', 'check_number' , {:class=>"text-input"} %>
+</div>
+<div class="form-element">
+  <label for="owner_updated_at">Last updated at</label>
+ <%= @owner.updated_at %>
+</div>
+<!--[eoform:owner]-->
+
+	</div>
+</fieldset>

@@ -1,0 +1,46 @@
+
+
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+  <%= javascript_include_tag :defaults %>
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+<br/> 
+<%=@event.event_participants.size%> Riders
+<p/>
+<p/>
+<font size="1">
+<table border=1>
+  <!--
+    horse number","horse name","rider name","owner","stable","city","state"
+    -->
+	<tr>
+	  <th>Horse Number</td><th>Horse</th><th>Rider</th><th>Owner</th>
+	  <th>Stable</th><th>City</th><th>State</th><td>Place</td>
+	</tr>
+	
+	<% for @ep in @eps %>
+	  <% ep = EventParticipant.find_by_horse_id_and_rider_id_and_event_id(@ep.horse_id, @ep.rider_id, @ep.event_id) %>
+	  <% @ep.result = '__' if ep.result.empty?%>
+	  <% @ep.id = ep.id %>
+		<tr>
+			<td><%=@ep.horse.number%></td>
+			<td><%=@ep.horse.name%></td>
+			<td><%=@ep.rider.name%></td>
+			<td><%=@ep.rider.owner.name%></td>
+      <td><%=@ep.rider.owner.stable%></td>
+      <td><%=@ep.rider.owner.city%></td>
+      <td><%=@ep.rider.owner.state%></td>
+      <td>
+      <%= in_place_editor_field :ep, 'result' %>
+      </td>
+		</tr>
+	<% end %>
+
+</table>
+</font>
+<p/>
+

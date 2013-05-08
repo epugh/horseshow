@@ -1,0 +1,19 @@
+	
+    |open|/||
+
+	|assertTitle|Horse Show Registration||
+	|click|link=Create New||
+	|waitForTextPresent|Create Owner||
+
+
+|includePartial|owner_check|
+
+
+	|click|commit||
+	|waitForTextNotPresent|Create Owner||
+
+	|open|/selenium_tester/owner_name_to_id/${owner_name}|Edit|
+	|storeValue|owner_id|owner_id|
+	
+	|open|/||
+

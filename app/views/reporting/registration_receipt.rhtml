@@ -1,0 +1,53 @@
+
+  <style type="text/css">
+    table { border: 1px solid; }
+    td { border: 1px solid; padding: 5px; }
+    th { border: 1px solid; font-variant: small-caps; }
+  </style>
+<img align="right" src="/images/Ruremblm_BW_sm.jpg"></h2>
+<h2><%=@report_name%></h2>
+<%=Time.now %>
+
+<%=@owner.name%><br/>
+<%=@owner.stable%><br/>
+<%=@owner.street1%><br/>
+<% if @owner.street2 != ""%>
+<%=@owner.street2%><br/>
+<% end %>
+<%=@owner.city%> <%=@owner.state%> <%=@owner.zip%><p/>
+<%=@owner.phone%><p/>
+<%=@owner.email%><p/>
+
+<p/>
+<font size="2">
+<table border=1>
+  <!--
+    event class", "event name", "fee","horse number","rider name","horse name"
+    -->
+	<tr>
+	  <th>Event Class</th>
+	  <th>Event Name</td><th>Fee</th><th>Horse Number</th>
+	  <th>Rider Name</th><th>Horse Name</th>
+	</tr>
+	
+	<% for @ep in @eps %>
+		<tr>
+			<td><%=@ep.event.event_class%></td>
+			<td><%=@ep.event.name%></td>
+			<td><%=@ep.event.fee%></td>
+			<td><%=@ep.horse.number%></td>
+			<td><%=@ep.rider.name%></td>
+      <td><%=@ep.horse.name%></td>
+		</tr>
+	<% end %>
+
+</table>
+</font>
+<p/>
+Payment Method: <%=@owner.payment_type.name %><br/>
+<% if @owner.paid_by_check? %>
+Check Number: <%=@owner.check_number %><br/>
+<% end %>
+Total Event Fees: $<%=@owner.total_fees %><br/>
+Amount Paid: $<%=@owner.amount_paid %><br/>
+<b>Amount Owed: $<%=@owner.amount_owed %></b><br/>

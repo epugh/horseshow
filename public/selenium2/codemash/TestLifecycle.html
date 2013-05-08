@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+Copyright 2007 OpenSource Connections
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Test Lifecycle</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+  <tbody>
+    <tr>
+      <td rowspan="1" colspan="3">Test Lifecycle<br>
+      </td>
+    </tr>
+
+	<tr>
+		<td>store</td>
+		<td>JayDavis</td>
+		<td>owner_name</td>
+	</tr>
+
+    <tr>
+      <td>open</td>
+      <td>/selenium_tester/reset/${owner_name}</td>
+      <td>&nbsp;</td>
+    </tr>
+	
+    <tr>
+      <td>open</td>
+      <td>/</td>
+      <td>&nbsp;</td>
+    </tr>
+
+	<tr>
+		<td>assertTitle</td>
+		<td>Horse Show Registration</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>link=Create New</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>Create Owner</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_name</td>
+		<td>${owner_name}</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_street1</td>
+		<td>10 Maple Street</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_city</td>
+		<td>Smallville</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_city</td>
+		<td>Charlottesville</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_state</td>
+		<td>VA</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_zip</td>
+		<td>22903</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_phone</td>
+		<td>434-466-1467</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_email</td>
+		<td>somebody@somewhere.com</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_stable</td>
+		<td>Jay's Allstar Jumpers</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_amount_paid</td>
+		<td>10</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>owner_payment_type_id</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>select</td>
+		<td>owner_payment_type_id</td>
+		<td>label=Cash</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>owner_check_number</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>owner_check_number</td>
+		<td>056</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>1 error prohibited this owner from being saved</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td>verifyTextPresent</td>
+		<td>Check number can only be supplied if you are paying by check</td>
+		<td></td>
+	</tr>	
+
+	<tr>
+		<td>type</td>
+		<td>owner_check_number</td>
+		<td> </td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>		
+	<tr>
+		<td>waitForTextNotPresent</td>
+		<td>Create Owner</td>
+		<td></td>
+	</tr>
+	
+
+	<tr>
+		<td>open</td>
+		<td>/selenium_tester/owner_name_to_id/${owner_name}</td>
+		<td>Edit</td>
+	</tr>
+	<tr>
+		<td>storeValue</td>
+		<td>owner_id</td>
+		<td>owner_id</td>
+	</tr>
+	
+	<tr>
+		<td>open</td>
+		<td>/</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>assertElementPresent</td>
+		<td>//a[@id='owner_delete_${owner_id}']</td>
+		<td>Make sure deleting an owner is possible from manage owners</td>
+	</tr>
+
+	
+	<tr>
+		<td>clickAndWait</td>
+		<td>//a[contains(@href, '/owners/select_owner/owner_manage_${owner_id}?owner_id=${owner_id}')]</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>assertElementNotPresent</td>
+		<td>//a[@id='owner_delete_${owner_id}']</td>
+		<td>Can't delete from the owner page!</td>
+	</tr>	
+	
+	<tr>
+		<td>click</td>
+		<td>link=Create New</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>Create Rider</td>
+		<td></td>
+	</tr>
+		
+	<tr>
+		<td>type</td>
+		<td>rider_name</td>
+		<td>Judy Davis</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>rider_number</td>
+		<td>98</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextNotPresent</td>
+		<td>Create Rider</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td>click</td>
+		<td>//a[@id="create_new_horse"]</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>Create Horse</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td>type</td>
+		<td>horse_name</td>
+		<td>Calvin</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextNotPresent</td>
+		<td>Create Horse</td>
+		<td></td>
+	</tr>	
+	
+	<tr>
+		<td>click</td>
+		<td>//a[@id="create_new_horse"]</td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>Create Horse</td>
+		<td></td>
+	</tr>	
+
+	<tr>
+		<td>type</td>
+		<td>horse_name</td>
+		<td>Truffle</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextNotPresent</td>
+		<td>Create Horse</td>
+		<td></td>
+	</tr>	
+	
+	<!-- will fail at some point!>
+	<!--
+	<tr>
+		<td>click</td>
+		<td>//a[@onclick="new Ajax.Request('/event_participants/new?scaffold_id=event_participant&page=1&sort_direction=asc', {asynchronous:true, evalScripts:true, onLoading:function(request){Element.show('event_participant-new-loading-indicator');}}); return false;"]</td>
+		<td></td>
+	</tr>
+	-->
+	<tr>
+		<td>click</td>
+		<td>//a[@id="create_new_event_participant"]</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td>waitForTextPresent</td>
+		<td>Create Event Participant</td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td>select</td>
+		<td>event_participant_horse_id</td>
+		<td>Calvin</td>
+	</tr>
+	<tr>
+		<td>click</td>
+		<td>commit</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>waitForTextNotPresent</td>
+		<td>Create Event Participant</td>
+		<td></td>
+	</tr>
+
+    <tr>
+        <td>verifyText</td>
+        <td>xpath=(//td[@id='amount_owned'])</td>
+        <td>-10</td>
+    </tr>
+
+    <tr>
+      <td>refreshAndWait</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>	
+
+    <tr>
+        <td>verifyText</td>
+        <td>xpath=(//td[@id='amount_owned'])</td>
+        <td>-9</td>
+    </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

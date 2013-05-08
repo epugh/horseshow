@@ -1,0 +1,49 @@
+
+|store|JayDavis|owner_name|
+|open|/selenium_tester/reset|
+|open|/|&nbsp;|
+|assertTitle|Horse Show Registration||
+|click|link=Create New||
+|waitForTextPresent|Create Owner||
+
+
+|includePartial|owner_cash|
+
+
+|click|commit||
+|waitForTextPresent|1 error prohibited this owner from being saved||
+|verifyTextPresent|Check number can only be supplied if you are paying by check||
+|type|owner_check_number||
+|click|commit||
+|waitForTextNotPresent|Create Owner||
+|open|/selenium_tester/owner_name_to_id/${owner_name}|Edit|
+|storeValue|owner_id|owner_id|
+|open|/||
+|assertElementPresent|//a[@id='owner_delete_${owner_id}']|Make sure deleting an owner is possible from manage owners|
+|clickAndWait|//a[contains(@href, '/owners/select_owner/owner_manage_${owner_id}?owner_id=${owner_id}')]||
+|assertElementNotPresent|//a[@id='owner_delete_${owner_id}']|Can't delete from the owner page!|
+|click|link=Create New||
+|waitForTextPresent|Create Rider||
+|type|rider_name|Judy Davis|
+|type|rider_number|98|
+|click|commit||
+|waitForTextNotPresent|Create Rider||
+|click|//a[@id="create_new_horse"]||
+|waitForTextPresent|Create Horse||
+|type|horse_name|Calvin|
+|click|commit||
+|waitForTextNotPresent|Create Horse||
+|click|//a[@id="create_new_horse"]||
+|waitForTextPresent|Create Horse||
+|type|horse_name|Truffle|
+|click|commit||
+|waitForTextNotPresent|Create Horse||
+|click|//a[@id="create_new_event_participant"]||
+|waitForTextPresent|Create Event Participant||
+|select|event_participant_horse_id|Calvin|
+|click|commit||
+|waitForTextNotPresent|Create Event Participant||
+|verifyText|xpath=(//td[@id='amount_owned'])|-10|
+|refreshAndWait|&nbsp;|&nbsp;|
+|verifyText|xpath=(//td[@id='amount_owned'])|-9|
+

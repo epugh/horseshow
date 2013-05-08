@@ -1,0 +1,41 @@
+<p/>
+<h2>Details for <%=session[:owner].name %></h2>
+<hr/>
+<%= link_to('Refresh Payment Information', :controller => 'owners', :action => 'manage') %> 
+<%= link_to('Print Receipt', :controller => 'reporting', :action => 'registration_receipt', :owner_id=>session[:owner].id) %>
+<p/>
+<font size="2">
+<table border="1">
+	<tr>
+		<td>Amount Paid</td><td id="amount_paid"><%=session[:owner].amount_paid %></td>
+	</tr>
+	<tr>
+		<td>Amount Owed</td><td id="amount_owned"><%=session[:owner].amount_owed %></td>
+	</tr>	
+	<tr>
+		<td>Payment Method</td><td><%=session[:owner].payment_type.name %></td>
+	</tr>
+	<% if session[:owner].paid_by_check? %>
+	<tr>
+		<td>Check Number</td><td><%=session[:owner].check_number %></td>
+	</tr>	
+	<% end %>	
+</table>
+</font>
+
+
+<%= render_component :controller => '/owners', :action => 'component', :params => params %>
+
+<%= render_component :controller => '/horses', :action => 'component', :params => params %>
+
+<%= render_component :controller => '/riders', :action => 'component', :params => params %>
+
+<%= render_component :controller => '/event_participants', :action => 'component', :params => params %>
+
+<hr/>
+Beta Test!
+<div id='multi_events_picker'>
+  <%= link_to_remote "Add Multiple Classes for Horse/Rider", :url => {:action => "load_multi_events_picker"} %>
+</div>
+<hr/>
+
